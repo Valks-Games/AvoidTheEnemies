@@ -19,7 +19,7 @@ https://github.com/Valks-Games/AvoidTheEnemies/assets/6277739/1ed52b05-6f3e-4f30
 - Look into multiplayer
 
 ## Contributing
-Currently looking for programmers to peer review my code.
+All contributions welcome
 
 [Projects Coding Style](https://github.com/Valks-Games/sankari/wiki/Code-Style)
 
