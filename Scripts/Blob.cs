@@ -15,4 +15,14 @@ public partial class Blob : RigidBody2D
 
         ApplyCentralForce(vel);
     }
+
+    public void Kill()
+    {
+        // Spawn XP orb on death
+        var xpOrb = (XPOrb)Prefabs.XP_Orb.Instantiate();
+        xpOrb.Position = Position;
+        GetTree().Root.CallDeferred("add_child", xpOrb);
+
+        QueueFree();
+    }
 }
