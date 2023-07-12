@@ -3,7 +3,7 @@ namespace AvoidTheEnemies;
 public partial class Level : Node
 {
     public static Player Player { get; private set; }
-    public static List<Blob> Enemies { get; } = new();
+    public static Dictionary<ulong, Blob> Enemies { get; } = new();
 
     const int MAX_ENEMIES_ON_SCREEN = 1000;
     const int SPAWNER_INTERVAL = 1000;
@@ -58,7 +58,7 @@ public partial class Level : Node
             enemiesOnScreen++;
 
             var blob = (Blob)Prefabs.Blob.Instantiate();
-            Enemies.Add(blob);
+            Enemies.Add(blob.GetInstanceId(), blob);
 
             var dist = ENEMY_SPAWN_DISTANCE_FROM_PLAYER + GD.RandRange(0, ENEMY_RANDOM_SPAWN_DISTANCE_FROM_PLAYER);
             var theta = (float)GD.RandRange(0, Mathf.Pi * 2);

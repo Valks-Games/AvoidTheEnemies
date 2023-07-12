@@ -20,6 +20,7 @@ public partial class Projectile : Node2D
         {
             if (body is Blob enemy)
             {
+                Level.Enemies.Remove(enemy.GetInstanceId());
                 enemy.QueueFree();
             }
         };

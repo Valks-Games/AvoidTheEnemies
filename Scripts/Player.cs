@@ -39,7 +39,7 @@ public partial class Player : CharacterBody2D
         Blob closestEnemy = null;
         var minDist = Mathf.Inf;
 
-        foreach (var enemy in Level.Enemies)
+        foreach (var enemy in Level.Enemies.Values)
         {
             var dist = enemy.Position.DistanceTo(Position);
 
