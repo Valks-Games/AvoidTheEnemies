@@ -1,4 +1,4 @@
-namespace Template.TopDown2D;
+namespace AvoidTheEnemies;
 
 public partial class Player : CharacterBody2D
 {

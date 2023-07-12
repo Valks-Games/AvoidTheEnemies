@@ -1,4 +1,4 @@
-﻿namespace Template;
+﻿namespace AvoidTheEnemies;
 
 using System.Reflection;
 

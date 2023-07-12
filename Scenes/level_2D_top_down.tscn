@@ -1,24 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://btkfgi3rc5wm1"]
+[gd_scene load_steps=7 format=3 uid="uid://btkfgi3rc5wm1"]
 
-[ext_resource type="Script" path="res://Scripts/2D Top Down/Player.cs" id="1_hrosf"]
-[ext_resource type="Texture2D" uid="uid://q80kt62wvbpp" path="res://Sprites/UI/icon.svg" id="2_83qsm"]
+[ext_resource type="Script" path="res://Scripts/Level.cs" id="1_dk67u"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_mer10"]
 [ext_resource type="PackedScene" uid="uid://c6pism2kgjr5c" path="res://Scenes/Prefabs/UI/popup_menu.tscn" id="2_ep4f7"]
+[ext_resource type="Texture2D" uid="uid://b7f1lsx75gtj1" path="res://Sprites/circle-128.png" id="4_y53ro"]
+[ext_resource type="Texture2D" uid="uid://cuq4e87b4hbos" path="res://Sprites/hero.png" id="5_qjwd5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4su66"]
-size = Vector2(125, 125)
+[sub_resource type="CircleShape2D" id="CircleShape2D_wc0ig"]
+radius = 32.0
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_dk67u")
+
+[node name="Reference Background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.054902)
+scale = Vector2(50, 50)
+texture = ExtResource("5_qjwd5")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(531, 300)
 motion_mode = 1
-script = ExtResource("1_hrosf")
+script = ExtResource("1_mer10")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_4su66")
+shape = SubResource("CircleShape2D_wc0ig")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_83qsm")
+self_modulate = Color(0.313726, 1, 0.298039, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_y53ro")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.4, 0.4)
+
+[node name="Enemies" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

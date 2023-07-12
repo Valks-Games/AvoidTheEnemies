@@ -1,6 +1,6 @@
 using static Godot.DisplayServer;
 
-namespace Template;
+namespace AvoidTheEnemies;
 
 public partial class UIOptionsDisplay : Control
 {

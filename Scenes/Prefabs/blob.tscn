@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c57awodcd3db8"]
+
+[ext_resource type="Script" path="res://Scripts/Blob.cs" id="1_d5b53"]
+[ext_resource type="Texture2D" uid="uid://b7f1lsx75gtj1" path="res://Sprites/circle-128.png" id="2_hcscn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f7riy"]
+radius = 32.0
+
+[node name="Blob" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+continuous_cd = 1
+linear_damp = 5.0
+script = ExtResource("1_d5b53")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f7riy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.211765, 0.231373, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hcscn")

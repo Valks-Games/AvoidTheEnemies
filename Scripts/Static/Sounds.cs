@@ -1,4 +1,4 @@
-﻿namespace Template;
+﻿namespace AvoidTheEnemies;
 
 public static class Sounds
 {
