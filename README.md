@@ -16,6 +16,7 @@ https://github.com/Valks-Games/AvoidTheEnemies/assets/6277739/1ed52b05-6f3e-4f30
 ## Roadmap v1.0
 (Won't get around to doing this for a very very long time)
 - Different types of bosses
+- Better art for everything
 - Look into multiplayer
 
 ## Contributing
