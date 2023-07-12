@@ -23,7 +23,6 @@ public partial class Level : Node
     Node nodeEnemies;
 
     // Trackers
-    int enemiesOnScreen;
     int enemiesToSpawn = 1;
     int maxEnemiesForDifficulty = 20;
 
@@ -52,10 +51,8 @@ public partial class Level : Node
     {
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            if (enemiesOnScreen >= maxEnemiesForDifficulty)
+            if (Enemies.Count >= maxEnemiesForDifficulty)
                 break;
-                
-            enemiesOnScreen++;
 
             var blob = (Blob)Prefabs.Blob.Instantiate();
             Enemies.Add(blob.GetInstanceId(), blob);
