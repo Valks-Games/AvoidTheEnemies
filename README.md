@@ -1,5 +1,7 @@
 This game is using the [latest Godot 4 C# release](https://godotengine.org/)
 
+Just trying to make a game like Vampire Survivors and Halls of Torment :)
+
 https://github.com/Valks-Games/AvoidTheEnemies/assets/6277739/1ed52b05-6f3e-4f30-af1a-69a2dd975920
 
 ## Roadmap v0.1
