@@ -2,6 +2,7 @@ namespace AvoidTheEnemies;
 
 public static class Prefabs
 {
+    public static PackedScene CardUpgradeNote { get; } = Load("UI/card_upgrade_note");
     public static PackedScene XP_Orb { get; } = Load("xp_orb");
     public static PackedScene LaserBlue { get; } = Load("laser_blue");
     public static PackedScene Blob { get; } = Load("blob");

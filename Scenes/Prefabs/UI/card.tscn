@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/UICard.cs" id="1_0t542"]
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("CardTitle", "VBox")]
 process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,6 +23,8 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("1_0t542")
+CardTitle = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/Label")
+VBox = NodePath("PanelContainer/MarginContainer/VBoxContainer")
 metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -60,49 +62,3 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 text = "Movement Speed"
 horizontal_alignment = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-expand_mode = 1
-
-[node name="Label4" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "Speed:"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-mouse_filter = 2
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "1"
-
-[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = ">"
-
-[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "2"

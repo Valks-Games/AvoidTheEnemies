@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlg5j0wvt6yro"]
+
+[ext_resource type="Script" path="res://Scripts/UI/UICardUpgradeNote.cs" id="1_q0oc2"]
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("UpgradeType", "UpgradeBefore", "UpgradeAfter")]
+mouse_filter = 2
+script = ExtResource("1_q0oc2")
+UpgradeType = NodePath("MarginContainer/HBoxContainer/Label4")
+UpgradeBefore = NodePath("MarginContainer/HBoxContainer/HBoxContainer/Label")
+UpgradeAfter = NodePath("MarginContainer/HBoxContainer/HBoxContainer/Label3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+expand_mode = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Speed:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = ">"
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "2"

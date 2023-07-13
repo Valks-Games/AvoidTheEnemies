@@ -1,7 +1,18 @@
 namespace AvoidTheEnemies;
 
+public enum CardUpgradeType
+{
+    Speed,
+    Health,
+    MaxHealth,
+    Firerate
+}
+
 public partial class UICard : MarginContainer
 {
+    [Export] public Label CardTitle { get; set; }
+    [Export] public VBoxContainer VBox { get; set; }
+
     public event Action OnPicked;
 
     const int ANIMATION_DELAY = 50;
@@ -14,6 +25,7 @@ public partial class UICard : MarginContainer
 
     PanelContainer panelContainer;
 
+    public CardUpgradeType CardUpgradeType { get; set; }
     int totalCards;
     int columns;
 
@@ -83,10 +95,60 @@ public partial class UICard : MarginContainer
             }
         };
 
+        var player = Player.Instance;
+
         OnPicked += () =>
         {
-            Player.Speed = 100;
+            switch (CardUpgradeType)
+            {
+                case CardUpgradeType.Speed:
+                    player.Speed += 10;
+                    break;
+                case CardUpgradeType.Health:
+                    player.AddHealth(5);
+                    break;
+                case CardUpgradeType.MaxHealth:
+                    player.AddMaxHealth(5);
+                    break;
+                case CardUpgradeType.Firerate:
+                    player.IncreaseFirerate(50);
+                    break;
+            }
         };
+
+        CardTitle.Text = CardUpgradeType + "";
+
+        var cardUpgradeNote = (UICardUpgradeNote)Prefabs.CardUpgradeNote.Instantiate();
+
+        switch (CardUpgradeType)
+        {
+            case CardUpgradeType.Speed:
+                cardUpgradeNote.SetInfo(
+                    type: CardUpgradeType,
+                    before: player.Speed,
+                    after: player.Speed + 10);
+                break;
+            case CardUpgradeType.Health:
+                cardUpgradeNote.SetInfo(
+                    type: CardUpgradeType,
+                    before: player.Health,
+                    after: player.Health + 5);
+                break;
+            case CardUpgradeType.MaxHealth:
+                cardUpgradeNote.SetInfo(
+                    type: CardUpgradeType,
+                    before: player.MaxHealth,
+                    after: player.MaxHealth + 5);
+                break;
+            case CardUpgradeType.Firerate:
+                cardUpgradeNote.SetInfo(
+                    type: CardUpgradeType,
+                    before: player.Firerate,
+                    after: player.Firerate - 50);
+                break;
+        }
+
+        VBox.AddChild(cardUpgradeNote);
     }
 
     async void UpdateSize()

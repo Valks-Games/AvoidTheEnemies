@@ -2,21 +2,25 @@ namespace AvoidTheEnemies;
 
 public partial class Player : CharacterBody2D
 {
+    public static Player Instance { get; private set; }
+
     public event Action<int> OnXpChange;
     public event Action<Player> OnHealthChange;
 
-    public static float Speed    { get; set; } = 50;
+    public float Speed    { get; set; } = 50;
     public float Friction { get; set; } = 0.1f;
 
     GTimer timerLasers;
-
     int xp;
+
+    public int Firerate { get; private set; } = 1000; // fire every 1 second
     public int MaxHealth { get; private set; } = 3;
     public int Health { get; private set; } = 3;
 
     public override void _Ready()
     {
-        timerLasers = new(this, 1000) { Loop = true };
+        Instance = this;
+        timerLasers = new(this, Firerate) { Loop = true };
         timerLasers.Finished += ShootLaser;
         timerLasers.Start();
     }
@@ -28,6 +32,27 @@ public partial class Player : CharacterBody2D
         Velocity = Velocity.Lerp(Vector2.Zero, Friction);
 
         MoveAndSlide();
+    }
+
+    public void IncreaseFirerate(int removeMs)
+    {
+        Firerate -= removeMs;
+        Firerate = Mathf.Max(Firerate, 10);
+
+        timerLasers.Start(Firerate);
+    }
+
+    public void AddMaxHealth(int maxHealth)
+    {
+        MaxHealth += maxHealth;
+        OnHealthChange?.Invoke(this);
+    }
+
+    public void AddHealth(int health)
+    {
+        Health += health;
+        Health = Mathf.Min(Health, MaxHealth);
+        OnHealthChange?.Invoke(this);
     }
 
     public void TakeDamage(int damage)
