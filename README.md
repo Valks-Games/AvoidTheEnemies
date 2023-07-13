@@ -1,47 +1,26 @@
-# Template
-A template for all Godot 4 C# starting projects. See the video below for a showcase of what's here so far.
+This game is using the [latest Godot 4 C# release](https://godotengine.org/)
 
-Main menu
-![1](https://user-images.githubusercontent.com/6277739/236582661-9e7a67d6-cf01-4457-9162-b3edd76dd999.png)
+Just trying to make a game like Vampire Survivors and Halls of Torment :)
 
-Options
-![2](https://user-images.githubusercontent.com/6277739/236582663-34dc44b2-7c29-4acd-b3b6-5a733ac7988d.png)
+https://github.com/Valks-Games/AvoidTheEnemies/assets/6277739/1ed52b05-6f3e-4f30-af1a-69a2dd975920
 
-Credits
-![3](https://user-images.githubusercontent.com/6277739/236582668-738667a7-3bf1-4074-b852-7735f1d57100.png)
+## Roadmap v0.1
+- XP Orbs animate towards player when player is near them
+- XP Progress Bar
+- Procedural tile background art (minimal collidables as enemies will not have pathfinding)
+- Get cards working. Movement speed, attack speed, projectile count, projectile pierce, projectile damage, health, and more I can't think off hand right now
+- Show POIs off screen with edge screen indicators
 
-Hotkeys
-![Untitled](https://user-images.githubusercontent.com/6277739/236582745-8d69b91f-497f-4188-b669-66daaa43691d.png)
-
-The collisions in this tileset have been setup for you.
-![Untitled](https://github.com/ValksGodotTools/Template/assets/6277739/6ecf0b86-dfe9-40a3-af8b-4e96678869b6)
-
-https://user-images.githubusercontent.com/6277739/233853220-cad1e927-8dcc-493d-a691-59e296c1b10f.mp4
-
-https://user-images.githubusercontent.com/6277739/234088697-11d94789-3a14-4aee-bc5b-ba8dee9f4461.mp4
-
-## Features
-- Pre-configured [project.godot](https://github.com/ValksGodotTools/Template/blob/main/project.godot) [.csproj](https://github.com/ValksGodotTools/Template/blob/main/Template.csproj) [.editorconfig](https://github.com/ValksGodotTools/Template/blob/main/.editorconfig) [.gitignore](https://github.com/ValksGodotTools/Template/blob/main/.gitignore)
-- [Godot Utils](https://github.com/ValksGodotTools/GodotUtils)
-- [UIConsole](https://github.com/ValksGodotTools/Template/blob/main/Scripts/UI/Console/UIConsole.cs)
-- [Hotkey Management](https://github.com/ValksGodotTools/Template/blob/main/Scripts/UI/Options/UIOptionsInput.cs)
-- [Audio Management](https://github.com/ValksGodotTools/Template/blob/main/Scripts/Autoloads/AudioManager.cs)
-- [Several Options](https://github.com/ValksGodotTools/Template/tree/main/Scripts/UI/Options)
-- [Global Autoload](https://github.com/ValksGodotTools/Template/blob/main/Scripts/Autoloads/Global.cs)
-- [Localisation](https://github.com/ValksGodotTools/Template/blob/main/Localisation/text.csv)
-- [Credits Scene](https://github.com/ValksGodotTools/Template/blob/main/Scripts/UI/UICredits.cs)
-- And lots more!
-
-## Setup
-1. Download and install the [latest Godot 4 C# release](https://godotengine.org/)
-2. Clone this repository with all its submodules
-```
-git clone --recursive https://github.com/ValksGodotTools/Template
-```
+## Roadmap v1.0
+(Won't get around to doing this for a very very long time)
+- Different types of bosses
+- Basic sounds and music
+- Better art for everything
+- Look into multiplayer
 
 ## Contributing
-Currently looking for programmers to peer review my code.
+All contributions welcome
 
 [Projects Coding Style](https://github.com/Valks-Games/sankari/wiki/Code-Style)
 
-If you have any questions, talk to me over Discord (`va#9904`)
+If you have any questions, talk to me over Discord (`valk2023`)
