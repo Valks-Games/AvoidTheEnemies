@@ -2,8 +2,16 @@ namespace AvoidTheEnemies;
 
 public partial class UICard : MarginContainer
 {
-    GTween tween;
+    const int ANIMATION_DELAY = 50;
+    const float ANIMATE_SCALE = 1.05f;
+    const float ANIMATION_DURATION = 0.2f;
+
+    GTimer timerAnimationBegin;
+    GTimer timerAnimationEnd;
+    GTween tweenAnimate;
+
     PanelContainer panelContainer;
+
     int totalCards;
     int columns;
 
@@ -20,6 +28,28 @@ public partial class UICard : MarginContainer
     {
         panelContainer = GetNodeOrNull<PanelContainer>("PanelContainer");
 
+        // Small delay before the animation begins
+        // This is to prevent the animations spazing out went the cursor moves over
+        // the cards rapidly
+        timerAnimationBegin = new(this, ANIMATION_DELAY);
+        timerAnimationBegin.Finished += () =>
+        {
+            tweenAnimate = new GTween(this);
+            tweenAnimate.Create();
+            tweenAnimate.Animate("scale", Vector2.One * ANIMATE_SCALE, ANIMATION_DURATION);
+        };
+
+        // Small delay before the animation transitions back to original state
+        // This is to prevent the animations spazing out went the cursor moves over
+        // the cards rapidly
+        timerAnimationEnd = new(this, ANIMATION_DELAY);
+        timerAnimationEnd.Finished += () =>
+        {
+            tweenAnimate = new GTween(this);
+            tweenAnimate.Create();
+            tweenAnimate.Animate("scale", Vector2.One, ANIMATION_DURATION);
+        };
+
         // Update the card size as soon as the card enters the scene
         UpdateSize();
 
@@ -28,24 +58,18 @@ public partial class UICard : MarginContainer
 
         MouseEntered += () =>
         {
-            //GD.Print("ENTERED");
-
-            tween = new GTween(this);
-            tween.Create();
-            tween.AnimateColor(Colors.Red, 1, true);
+            timerAnimationBegin.Start();
+            timerAnimationEnd.Stop();
         };
 
         MouseExited += () =>
         {
-            //GD.Print("EXITED");
-
-            tween = new GTween(this);
-            tween.Create();
-            tween.AnimateColor(Colors.White, 1, true);
+            timerAnimationBegin.Stop();
+            timerAnimationEnd.Start();
         };
     }
 
-    void UpdateSize()
+    async void UpdateSize()
     {
         var windowSize = DisplayServer.WindowGetSize();
         var winFactorX = 4.5f;
@@ -71,5 +95,11 @@ public partial class UICard : MarginContainer
                 x: windowSize.X / winFactorX,
                 y: windowSize.Y / (winFactorY * (1 + rowFactor))
             );
+
+        // Need to wait one frame so PivotOffset calculation uses updated Size value
+        await GUtils.WaitOneFrame(this);
+
+        // Update pivot offset
+        PivotOffset = Size / 2;
     }
 }
