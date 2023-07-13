@@ -37,6 +37,12 @@ zoom = Vector2(0.4, 0.4)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+
 [node name="PopupMenu" parent="CanvasLayer" instance=ExtResource("2_ep4f7")]
 visible = false
 
