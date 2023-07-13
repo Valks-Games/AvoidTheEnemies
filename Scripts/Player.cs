@@ -4,7 +4,7 @@ public partial class Player : CharacterBody2D
 {
     public event Action<int> OnXpChange;
 
-    public float Speed    { get; set; } = 50;
+    public static float Speed    { get; set; } = 50;
     public float Friction { get; set; } = 0.1f;
 
     GTimer timerLasers;

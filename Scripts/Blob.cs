@@ -23,7 +23,7 @@ public partial class Blob : RigidBody2D
         // Spawn XP orb on death
         var xpOrb = (XPOrb)Prefabs.XP_Orb.Instantiate();
         xpOrb.Position = Position;
-        xpOrb.Value = 10;
+        xpOrb.Value = 50;
         xpOrb.OnPickup += (player) =>
         {
             // Add xp to the player

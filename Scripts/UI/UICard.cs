@@ -2,6 +2,8 @@ namespace AvoidTheEnemies;
 
 public partial class UICard : MarginContainer
 {
+    public event Action OnPicked;
+
     const int ANIMATION_DELAY = 50;
     const float ANIMATE_SCALE = 1.05f;
     const float ANIMATION_DURATION = 0.2f;
@@ -76,8 +78,14 @@ public partial class UICard : MarginContainer
                 {
                     GetTree().Paused = false;
                     Level.CardManager.RemoveCards();
+                    OnPicked?.Invoke();
                 }
             }
+        };
+
+        OnPicked += () =>
+        {
+            Player.Speed = 100;
         };
     }
 
