@@ -39,6 +39,7 @@ public partial class UICard : MarginContainer
         {
             //GD.Print("EXITED");
 
+            tween = new GTween(this);
             tween.Create();
             tween.AnimateColor(Colors.White, 1, true);
         };
