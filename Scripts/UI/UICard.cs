@@ -70,7 +70,14 @@ public partial class UICard : MarginContainer
 
         GuiInput += (inputEvent) =>
         {
-
+            if (inputEvent is InputEventMouseButton mouse)
+            {
+                if (mouse.IsLeftClickPressed())
+                {
+                    GetTree().Paused = false;
+                    Level.CardManager.RemoveCards();
+                }
+            }
         };
     }
 
