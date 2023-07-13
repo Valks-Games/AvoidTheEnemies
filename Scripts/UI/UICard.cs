@@ -67,6 +67,11 @@ public partial class UICard : MarginContainer
             timerAnimationBegin.Stop();
             timerAnimationEnd.Start();
         };
+
+        GuiInput += (inputEvent) =>
+        {
+
+        };
     }
 
     async void UpdateSize()

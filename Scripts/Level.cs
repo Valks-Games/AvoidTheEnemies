@@ -4,6 +4,8 @@ public partial class Level : Node
 {
     public static Player Player { get; private set; }
     public static Dictionary<ulong, Blob> Enemies { get; } = new();
+    public static ProgressBar XPBar { get; private set; }
+    public static UICardManager CardManager { get; private set; }
 
     const int MAX_ENEMIES_ON_SCREEN = 1000;
     const int SPAWNER_INTERVAL = 1000;
@@ -30,6 +32,8 @@ public partial class Level : Node
     {
         Player = GetNode<Player>("Player");
         nodeEnemies = GetNode("Enemies");
+        XPBar = GetNode<ProgressBar>("CanvasLayer/ProgressBar");
+        CardManager = GetNode<UICardManager>("CanvasLayer/MarginContainer/GridContainer");
 
         timerSpawnInterval = new(this, SPAWNER_INTERVAL) { Loop = true };
         timerSpawnInterval.Finished += SpawnEnemies;
