@@ -23,6 +23,7 @@ public partial class Player : CharacterBody2D
 
             if (Level.XPBar.Value >= 100)
             {
+                GetTree().Paused = true;
                 Level.XPBar.Value = 0;
                 Level.CardManager.AddCards(3);
             }
