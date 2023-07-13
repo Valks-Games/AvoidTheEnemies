@@ -29,4 +29,4 @@ Want to help? Check out the [projects current issues](https://github.com/Valks-G
 
 [Projects Coding Style](https://github.com/Valks-Games/sankari/wiki/Code-Style)
 
-If you have any questions, talk to me over Discord (`valk2023`)
+If you have any questions, talk to me over Discord (`valk2023`). I am actively working on this, you should hear a reply from me within 24 hours, if not you can yell at me.
