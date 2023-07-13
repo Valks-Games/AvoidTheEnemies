@@ -21,6 +21,8 @@ https://github.com/Valks-Games/AvoidTheEnemies/assets/6277739/1ed52b05-6f3e-4f30
 ## Contributing
 All contributions welcome
 
+Want to help? Check out the [projects current issues](https://github.com/Valks-Games/AvoidTheEnemies/issues)!
+
 [Projects Coding Style](https://github.com/Valks-Games/sankari/wiki/Code-Style)
 
 If you have any questions, talk to me over Discord (`valk2023`)
