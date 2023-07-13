@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://btkfgi3rc5wm1"]
+[gd_scene load_steps=9 format=3 uid="uid://btkfgi3rc5wm1"]
 
 [ext_resource type="Script" path="res://Scripts/Level.cs" id="1_dk67u"]
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_mer10"]
 [ext_resource type="PackedScene" uid="uid://c6pism2kgjr5c" path="res://Scenes/Prefabs/UI/popup_menu.tscn" id="2_ep4f7"]
 [ext_resource type="Texture2D" uid="uid://b7f1lsx75gtj1" path="res://Sprites/circle-128.png" id="4_y53ro"]
+[ext_resource type="Script" path="res://Scripts/UIManager.cs" id="5_n77br"]
 [ext_resource type="Texture2D" uid="uid://cuq4e87b4hbos" path="res://Sprites/hero.png" id="5_qjwd5"]
 [ext_resource type="Script" path="res://Scripts/UI/UICardManager.cs" id="6_3m8fi"]
 
@@ -36,6 +37,7 @@ zoom = Vector2(0.4, 0.4)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("5_n77br")
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 10
@@ -69,3 +71,12 @@ layout_mode = 2
 columns = 4
 script = ExtResource("6_3m8fi")
 metadata/_edit_lock_ = true
+
+[node name="Health" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "Health: 3 / 3"

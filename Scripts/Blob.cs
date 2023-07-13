@@ -1,5 +1,3 @@
-using Newtonsoft.Json.Linq;
-
 namespace AvoidTheEnemies;
 
 /*
@@ -9,6 +7,17 @@ namespace AvoidTheEnemies;
 public partial class Blob : RigidBody2D
 {
     [Export] public float Speed { get; set; } = 1000;
+
+    public override void _Ready()
+    {
+        GetNode<Area2D>("Area2D").BodyEntered += body =>
+        {
+            if (body is Player player)
+            {
+                player.TakeDamage(1);
+            }
+        };
+    }
 
     public override void _PhysicsProcess(double delta)
     {

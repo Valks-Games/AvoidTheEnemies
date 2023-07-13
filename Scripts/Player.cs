@@ -3,6 +3,7 @@ namespace AvoidTheEnemies;
 public partial class Player : CharacterBody2D
 {
     public event Action<int> OnXpChange;
+    public event Action<Player> OnHealthChange;
 
     public static float Speed    { get; set; } = 50;
     public float Friction { get; set; } = 0.1f;
@@ -10,24 +11,14 @@ public partial class Player : CharacterBody2D
     GTimer timerLasers;
 
     int xp;
+    public int MaxHealth { get; private set; } = 3;
+    public int Health { get; private set; } = 3;
 
     public override void _Ready()
     {
         timerLasers = new(this, 1000) { Loop = true };
         timerLasers.Finished += ShootLaser;
         timerLasers.Start();
-
-        OnXpChange += (xp) =>
-        {
-            Level.XPBar.Value += xp;
-
-            if (Level.XPBar.Value >= 100)
-            {
-                GetTree().Paused = true;
-                Level.XPBar.Value = 0;
-                Level.CardManager.AddCards(3);
-            }
-        };
     }
 
     public override void _PhysicsProcess(double delta)
@@ -37,6 +28,12 @@ public partial class Player : CharacterBody2D
         Velocity = Velocity.Lerp(Vector2.Zero, Friction);
 
         MoveAndSlide();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+        OnHealthChange?.Invoke(this);
     }
 
     public void AddXP(int xp)

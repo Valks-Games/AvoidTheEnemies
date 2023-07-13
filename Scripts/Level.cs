@@ -6,6 +6,16 @@ public partial class Level : Node
     public static Dictionary<ulong, Blob> Enemies { get; } = new();
     public static ProgressBar XPBar { get; private set; }
     public static UICardManager CardManager { get; private set; }
+    public static Label LabelHealth { get; private set; }
+    public static UIManager UIManager { get; private set; }
+
+    // This is the first time I have ever used a static Action. I did not add the
+    // event keyword because then I would not have been able to invoke it from
+    // UIManager. I am not sure if this is the right way to do things.
+    public static Action OnLevelChange;
+
+    public event Action OnDifficultyIncrease;
+    public event Action OnSpawnEnemies;
 
     const int MAX_ENEMIES_ON_SCREEN = 1000;
     const int SPAWNER_INTERVAL = 1000;
@@ -30,6 +40,8 @@ public partial class Level : Node
 
     public override void _Ready()
     {
+        UIManager = GetNode<UIManager>("CanvasLayer");
+        LabelHealth = GetNode<Label>("CanvasLayer/Health");
         Player = GetNode<Player>("Player");
         nodeEnemies = GetNode("Enemies");
         XPBar = GetNode<ProgressBar>("CanvasLayer/ProgressBar");
@@ -42,6 +54,13 @@ public partial class Level : Node
         timerDifficultyIncrease = new(this, DIFFICULTY_INCREASE_INTERVAL) { Loop = true };
         timerDifficultyIncrease.Finished += IncreaseDifficulty;
         timerDifficultyIncrease.Start();
+
+        UIManager.RegisterEvents();
+
+        OnLevelChange += () =>
+        {
+            GetTree().Paused = true;
+        };
     }
 
     void IncreaseDifficulty()
@@ -49,6 +68,8 @@ public partial class Level : Node
         maxEnemiesForDifficulty += maxEnemiesToAddForDifficultyIncrease;
         maxEnemiesForDifficulty = Mathf.Min(maxEnemiesForDifficulty, MAX_ENEMIES_ON_SCREEN);
         enemiesToSpawn += enemiesToAddForDifficultyIncrease;
+        
+        OnDifficultyIncrease?.Invoke();
     }
 
     void SpawnEnemies()
@@ -68,5 +89,7 @@ public partial class Level : Node
             blob.Position = Player.Position + dir * dist;
             nodeEnemies.AddChild(blob);
         }
+
+        OnSpawnEnemies?.Invoke();
     }
 }
