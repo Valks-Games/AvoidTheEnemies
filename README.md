@@ -1,6 +1,6 @@
 This is a learning project to understand how games like Vampire Survivors and Halls of Torment were made.
 
-https://github.com/Valks-Games/AvoidTheEnemies/assets/6277739/1ed52b05-6f3e-4f30-af1a-69a2dd975920
+[Watch video of gameplay on YouTube here](https://youtu.be/0yyr2egaW6o) (video file was too big to embed into the README.md)
 
 ## Roadmap v0.1
 - [x] XP Progress Bar
