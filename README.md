@@ -1,6 +1,6 @@
 This is a learning project to understand how games like Vampire Survivors and Halls of Torment were made.
 
-[Watch video of gameplay on YouTube here](https://youtu.be/0yyr2egaW6o) (video file was too big to embed into the README.md)
+[Watch video of gameplay on YouTube here](https://youtu.be/5WKYdXOG40c) (video file was too big to embed into the README.md)
 
 ## Roadmap v0.1
 - [x] XP Progress Bar
