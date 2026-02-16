@@ -1,3 +1,6 @@
+> [!NOTE]
+> This project has been archived because it is out of sync with [CSharpGodotTools/Template](https://github.com/CSharpGodotTools/Template). Template has had some improvements since then so sync issues should not be a problem in the future.
+
 This is a learning project to understand how games like Vampire Survivors and Halls of Torment were made.
 
 [Watch video of gameplay on YouTube here](https://youtu.be/5WKYdXOG40c) (video file was too big to embed into the README.md)
